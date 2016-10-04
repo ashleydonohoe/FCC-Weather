@@ -1,0 +1,30 @@
+body {
+    background: deepskyblue;
+    font-family: "Avenir Next", Helvetica, sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.jumbotron {
+    background: whitesmoke;
+    margin: 40px auto;
+    height: 300px;
+    max-width: 85%;
+    padding: 15px;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
+
+#city-name {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#temperature {
+  font-weight: 300;
+}

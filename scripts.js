@@ -3,6 +3,18 @@ var lon;
 var scale = "imperial";
 var weatherData;
 
+    $("#metric").click(function() {
+        console.log("Changed to metric");
+        scale = "metric";
+        downloadWeather()
+    });
+
+    $("#imperial").click(function() {
+        console.log("Changed to imperial");
+        scale = "imperial";
+        downloadWeather()
+    });
+
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
         lat = position.coords.latitude;
@@ -25,28 +37,35 @@ function downloadWeather() {
 function displayWeatherInfo(data) {
     weatherData = data;
     updateWeather();
-    // $("#city-name").text(data.name);
-    // $("#temperature").text(data.main.temp + " F");
-    // $("#conditions").text(data.weather[0].description);
-    // $("#current-wind").text(data.wind.speed + " mph");
-    //
-    // // Adding weather icon
-    // var iconText = data.weather[0].main.toLowerCase();
-    // console.log(iconText);
-    //
-    // if(iconText.includes("clouds")) {
-    //     $("i").addClass("fa fa-cloud fa-3x");
-    // } else if(iconText.includes("sun")) {
-    //     $("i").addClass("fa fa-sun-o fa-3x");
-    // } else if(iconText.includes("rain")) {
-    //     $("i").addClass("fa fa-tint fa-3x");
-    // } else if (iconText.includes("storm")) {
-    //     $("i").addClass("fa fa-bolt fa-3x");
-    // } else {
-    //     $("i").addClass("fa fa-skyatlas fa-3x");
-    // }
 }
 
 function updateWeather() {
     console.log(weatherData);
+    $("#status").text("");
+    $("#city-name").text(weatherData.name);
+    if(scale == "imperial") {
+        $("#temperature").text(weatherData.main.temp + " F");
+        $("#current-wind").text(weatherData.wind.speed + " mph");
+    } else {
+        $("#temperature").text(weatherData.main.temp + " C");
+        $("#current-wind").text(weatherData.wind.speed + " kph");
+    }
+
+    $("#conditions").text(weatherData.weather[0].description);
+
+    // Adding weather icon
+    var iconText = weatherData.weather[0].main.toLowerCase();
+    console.log(iconText);
+
+    if(iconText.includes("clouds")) {
+        $("i").addClass("fa fa-cloud fa-3x");
+    } else if(iconText.includes("sun")) {
+        $("i").addClass("fa fa-sun-o fa-3x");
+    } else if(iconText.includes("rain")) {
+        $("i").addClass("fa fa-tint fa-3x");
+    } else if (iconText.includes("storm")) {
+        $("i").addClass("fa fa-bolt fa-3x");
+    } else {
+        $("i").addClass("fa fa-skyatlas fa-3x");
+    }
 }

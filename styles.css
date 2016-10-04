@@ -10,7 +10,7 @@ body {
 .jumbotron {
     background: whitesmoke;
     margin: 40px auto;
-    height: 300px;
+    height: 400px;
     max-width: 85%;
     padding: 15px;
 }
@@ -20,6 +20,10 @@ img {
     width: 100px;
 }
 
+.fa-sun-o {
+    background: yellow;
+}
+
 #city-name {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -27,4 +31,22 @@ img {
 
 #temperature {
   font-weight: 300;
+}
+
+#scale {
+    color: white;
+    margin-bottom: 20px;
+    margin-left: 70%;
+
+}
+
+.btn-secondary {
+    background: deepskyblue;
+    border-right: 1px solid white;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.btn-secondary:first-of-type {
+    margin-right: 10px;
 }
